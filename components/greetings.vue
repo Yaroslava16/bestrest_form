@@ -1,30 +1,46 @@
 <template>
-  <div class="grettings">
-    <img class="grettings__logo" src="~assets/logo.svg" alt="" />
-    <h1 class="grettings__title">
-      Find the<span> best place</span><br />
-      <span>to rest</span> while traveling
-    </h1>
-    <button class="grettings__btn" @click="$emit('scroll')">Registration</button>
+  <div class="grettings-wrap">
+    <div class="grettings__content">
+      <img class="grettings__logo" src="~assets/logo.svg" alt="" />
+      <h1 class="grettings__title">
+        Find the<span> best place</span><br />
+        <span>to rest</span> while traveling
+      </h1>
+      <button
+        class="grettings__btn"
+        v-scroll-to="{
+          el: '#form',
+          duration: 300,
+          easing: 'linear',
+        }"
+      >
+        Registration
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
-.grettings {
-  padding: 19.792vw 0;
+.grettings-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
-  background-image: url(~/assets/img-bgs/bg-1.jpg);
-  background-size: cover;
+  background-image: url(~/assets/bg-forms/section_1-svg_2.svg),
+    url(~/assets/bg-forms/section_1-svg_1.svg),
+    url(~/assets/bg-forms/section_1-svg_3.svg), url(~/assets/img-bgs/bg-1.jpg);
+  background-size: auto, auto, auto, cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background-attachment: scroll, scroll, scroll, fixed;
+  background-position: -4vw 17.847vw, right 17.847vw top -3vw,
+    right -3vw bottom 2vw, center;
+}
+.grettings {
   &__logo {
     margin: 0 auto 2.778vw;
   }

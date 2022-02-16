@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Greetings @scroll="goTo('form')" />
+    <Greetings />
     <Form />
   </div>
 </template>
@@ -11,14 +11,14 @@ import Form from "~/components/form.vue";
 export default {
   name: "IndexPage",
   components: { Greetings, Form },
-  methods: {
-    goTo(id) {
-      document.getElementById(id).scrollIntoView({
-        behavior: "smooth",
-        duration: 400,
-      });
-    },
-  },
+  // methods: {
+  //   goTo(id) {
+  //     document.getElementById(id).scrollIntoView({
+  //       behavior: "smooth",
+  //       duration: 400,
+  //     });
+  //   },
+  // },
 };
 </script>
 
