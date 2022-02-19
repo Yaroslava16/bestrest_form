@@ -1,25 +1,19 @@
 <template>
-  <div>
-    <div class="input-wrap">
-      <!-- <label class="input__label" for="(input.idInput)">
-      <span>{{ input.labelText }}</span>
-      
-    </label> -->
-      <input
-        class="input__input"
-        :id="input.idInput"
-        v-model.trim="input.value"
-        :placeholder="input.textInput"
-        :type="input.typeInput"
-        :name="input.nameInput"
-        :style="{ 'background-image': `url('${input.icon}')` }"
-      />
-      <label class="input__label" for="(input.idInput)">
-        {{ input.labelText }}</label
-      ><span class="input__error-text">{{
-        validateInput(input.nameInput, input.value)
-      }}</span>
-    </div>
+  <div class="input-wrap">
+    <input
+      class="input__input"
+      :id="input.idInput"
+      v-model.trim="input.value"
+      :placeholder="input.textInput"
+      :type="input.typeInput"
+      :name="input.nameInput"
+      :style="{ 'background-image': `url('${input.icon}')` }"
+    />
+    <label class="input__label" for="(input.idInput)">
+      {{ input.labelText }}</label
+    ><span class="input__error-text" id="message">{{
+      validateInput(input.nameInput, input.value)
+    }}</span>
   </div>
 </template>
 
@@ -27,9 +21,7 @@
 export default {
   props: ["input"],
   data() {
-    return {
-      formValidationsError: "",
-    };
+    return { password: "", formValidationsError: "" };
   },
   methods: {
     validateInput(type, value) {
@@ -42,13 +34,18 @@ export default {
             this.input.errorText = "";
           }
           break;
+
         case "firstName":
           if (value.length > 0 && value.length < 2) {
             this.input.errorText = "The name must be more than 2 characters";
+            // setTimeout(function () {
+            //   document.getElementById("message").style.display = "none";
+            // }, 4000);
           } else if (value.length >= 2) {
             this.input.errorText = "";
           }
           break;
+
         case "secondName":
           if (value.length > 0 && value.length < 2) {
             this.input.errorText = "The name must be more than 2 characters";
@@ -56,9 +53,35 @@ export default {
             this.input.errorText = "";
           }
           break;
+
+        case "password":
+          if (value) {
+            const validPassword = /(?=.*[0-9])+(?=.*[!@#$%^&*])+(?=.*[a-z])/;
+            this.password = value;
+            if (validPassword.test(value)) {
+              this.input.errorText = "";
+            } else {
+              this.input.errorText =
+                "Password must have 1 letter, 1 number and one symbol";
+            }
+          }
+          break;
+        case "email":
+          if (value) {
+            const validEmail = /(?=.*[@])+(?=.*[.])/;
+            if (validEmail.test(value)) {
+              this.input.errorText = "";
+            } else {
+              this.input.errorText = "Email is not correct";
+            }
+          }
+          break;
       }
 
       return this.input.errorText;
+    },
+    clearError() {
+      return (this.input.errorText = "");
     },
   },
 };
@@ -67,40 +90,46 @@ export default {
 <style lang="scss" scoped>
 .input {
   &-wrap {
-    margin-bottom: 2.083vw;
+    padding-bottom: 6.083vw;
     width: 20.833vw;
     position: relative;
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
 
-    input:focus + label,
-    input:valid + label {
-      top: 30%;
-      font-size: 0.764vw;
-      line-height: 0.903vw;
-      color: #6ceec7;
-      transition: 0.3s;
-    }
-    label,
-    input:not(:focus) + label {
-      position: absolute;
-      top: 50%;
-      left: 20%;
-      transform: translate(-10%, -54%);
-      font-size: 1.319vw;
-      line-height: 1.597vw;
-      margin-bottom: 1.389vw;
-    }
+    // input:focus + label,
+    // // input:not(:focus):valid + label,
+    // input:not(:focus):valid + label {
+    //   top: 30%;
+    //   font-size: 0.764vw;
+    //   line-height: 0.903vw;
+    //   color: #6ceec7;
+    //   transition: 0.3s;
+    // }
   }
-
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    padding: 0.828vw 1.111vw 0.764vw 3.472vw;
+    font-size: 1.319vw;
+    line-height: 1.597vw;
+    // margin-bottom: 1.389vw;
+    color: #e0e0e0;
+    transition: 0.3s;
+  }
   &__input {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -54%);
     width: 20.833vw;
     height: 3.889vw;
     border-radius: 0.347vw;
     border: 0.069vw solid #ffffff;
-    padding: 1.828vw 1.111vw 0.764vw 3.472vw;
-    margin-bottom: 0.417vw;
-    transition: 0.2s;
+    padding: 1.828vw 1.111vw 0.6vw 3.472vw;
+    // margin-bottom: 0.417vw;
+    // transition: 0.2s;
     font-size: 1.319vw;
     line-height: 1.597vw;
     background: rgba(0, 0, 0, 0.2);
@@ -111,19 +140,31 @@ export default {
     cursor: pointer;
     outline: none;
     transition: 0.3s;
-    &::placeholder {
-      opacity: 0;
-    }
     &:hover,
     &:focus {
       border: 0.069vw solid #6ceec7;
       cursor: pointer;
     }
   }
+  &__input {
+    &::placeholder {
+      color: transparent;
+    }
+    &:not(:placeholder-shown) + label,
+    &:focus + label {
+      margin-top: -0.8vw;
+      font-size: 0.764vw;
+      line-height: 0.903vw;
+      color: #6ceec7;
+    }
+  }
+
   &__error-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     font-size: 0.694vw;
     line-height: 0.833vw;
-    text-align: right;
     color: #da5050;
   }
 }
