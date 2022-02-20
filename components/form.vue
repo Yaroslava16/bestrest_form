@@ -309,11 +309,10 @@ export default {
     color: #6ceec7;
     cursor: pointer;
     border-bottom: 0.069vw solid #6ceec7;
-    opacity: 0.8;
     transition: 0.3s;
-    &:hover {
-      opacity: 1;
-    }
+   &:hover {
+        border-bottom: 0.069vw solid #fff;
+      }
   }
 }
 .confirm-password {

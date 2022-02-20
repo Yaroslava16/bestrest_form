@@ -44,6 +44,9 @@ export default {};
     a {
       color: #6ceec7;
       border-bottom: 0.069vw solid #6ceec7;
+      &:hover {
+        border-bottom: 0.069vw solid #fff;
+      }
     }
   }
 }
