@@ -7,9 +7,10 @@
       <form class="form">
         <Input :input="input.firstName" />
         <Input :input="input.secondName" />
+        <Select :countries="countries" />
         <Input :input="input.phoneNumber" />
         <Input :input="input.password" />
-        <Input :input="input.confirmPassword" />
+        <Input class="confirm-password" :input="input.confirmPassword" />
         <span id="message">{{
           validateInput(
             this.input.confirmPassword.nameInput,
@@ -17,10 +18,10 @@
           )
         }}</span>
         <Input :input="input.email" />
-        <button class="form__btn" type="button" @click="submitHandler">
-          Sign Up
-        </button>
       </form>
+      <button class="form__btn" type="button" @click="submitHandler">
+        Sign Up
+      </button>
     </div>
     <p class="log-in">If you have an account, <a href="">Log In</a></p>
   </div>
@@ -28,15 +29,18 @@
 
 <script>
 import Input from "~/components/input.vue";
+import Select from "~/components/select.vue";
+import countries from "~/components/country.js";
 export default {
   components: {
     Input,
+    Select,
   },
   methods: {
     submitHandler() {
       setTimeout(function () {
-              this.$refs.message.style.display = "none";
-            }, 4000);
+        this.$refs.message.style.display = "none";
+      }, 4000);
     },
     validateInput(type, value) {
       this.formValidationsError = value;
@@ -60,6 +64,7 @@ export default {
     },
   },
   data: () => ({
+    countries: countries,
     input: {
       firstName: {
         idInput: "firstName",
@@ -207,5 +212,8 @@ export default {
       opacity: 1;
     }
   }
+}
+.confirm-password {
+  margin-left: 2vw;
 }
 </style>
