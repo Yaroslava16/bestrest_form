@@ -39,10 +39,20 @@ export default {};
   background-attachment: scroll, scroll, scroll, fixed;
   background-position: -4vw 17.847vw, right 17.847vw top -3vw,
     right -3vw bottom 2vw, center;
+  @media screen and (min-width: 360px) and (max-width: 575px) {
+    background-size: 27.5vw 21.667vw, 23.889vw 33.889vw, 25.833vw, cover;
+    background-position: right -8.5vw top 50vw, left -7vw top 3.611vw,
+      left -7vw bottom 10.833vw, center;
+  }
 }
 .grettings {
   &__logo {
     margin: 0 auto 2.778vw;
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      width: 33.333vw;
+      height: 8.333vw;
+      margin-bottom: 5.556vw;
+    }
   }
   &__title {
     margin: 0 auto 2.778vw;
@@ -50,6 +60,11 @@ export default {};
     font-size: 4.306vw;
     line-height: 5.069vw;
     text-align: center;
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      font-size: 8.333vw;
+      line-height: 10vw;
+      margin-bottom: 5.556vw;
+    }
     span {
       color: #6ceec7;
     }
@@ -70,7 +85,12 @@ export default {};
     color: #6ceec7;
     cursor: pointer;
     transition: 0.3s;
-
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      padding: 4.167vw 32.5vw;
+      border-radius: 1.389vw;
+      font-size: 4.444vw;
+      line-height: 5.278vw;
+    }
     &:hover {
       background: #6ceec7;
       color: black;

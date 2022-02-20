@@ -93,18 +93,10 @@ export default {
     padding-bottom: 6.083vw;
     width: 20.833vw;
     position: relative;
-    // display: flex;
-    // flex-direction: column;
-
-    // input:focus + label,
-    // // input:not(:focus):valid + label,
-    // input:not(:focus):valid + label {
-    //   top: 30%;
-    //   font-size: 0.764vw;
-    //   line-height: 0.903vw;
-    //   color: #6ceec7;
-    //   transition: 0.3s;
-    // }
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      width: 100%;
+      padding-bottom: 24vw;
+    }
   }
   &__label {
     position: absolute;
@@ -117,6 +109,12 @@ export default {
     // margin-bottom: 1.389vw;
     color: #e0e0e0;
     transition: 0.3s;
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      padding: 0.828vw 1.111vw 1.764vw 14vw;
+      white-space: nowrap;
+      font-size: 5.278vw;
+      line-height: 6.389vw;
+    }
   }
   &__input {
     position: absolute;
@@ -128,8 +126,6 @@ export default {
     border-radius: 0.347vw;
     border: 0.069vw solid #ffffff;
     padding: 1.828vw 1.111vw 0.6vw 3.472vw;
-    // margin-bottom: 0.417vw;
-    // transition: 0.2s;
     font-size: 1.319vw;
     line-height: 1.597vw;
     background: rgba(0, 0, 0, 0.2);
@@ -140,6 +136,17 @@ export default {
     cursor: pointer;
     outline: none;
     transition: 0.3s;
+
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      padding: 5vw 3.111vw 1.6vw 13.9vw;
+      width: 91.667vw;
+      height: 15.556vw;
+      border-radius: 1.389vw;
+      font-size: 5.278vw;
+      line-height: 6.389vw;
+      background-size: 6.667vw;
+      background-position: 4.111vw 4.111vw;
+    }
     &:hover,
     &:focus {
       border: 0.069vw solid #6ceec7;
@@ -156,6 +163,11 @@ export default {
       font-size: 0.764vw;
       line-height: 0.903vw;
       color: #6ceec7;
+      @media screen and (min-width: 360px) and (max-width: 575px) {
+        margin-top: -2.8vw;
+        font-size: 2.964vw;
+        line-height: 1.903vw;
+      }
     }
   }
 
@@ -166,6 +178,13 @@ export default {
     font-size: 0.694vw;
     line-height: 0.833vw;
     color: #da5050;
+
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      right: -47vw;
+      font-size: 2.694vw;
+      line-height: 2.833vw;
+      white-space: nowrap;
+    }
   }
 }
 </style>

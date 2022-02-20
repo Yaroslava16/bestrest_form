@@ -3,10 +3,9 @@
     <button
       type="button"
       class="select__toggle"
-      name="car"
+      name="arrow"
       value=""
       data-select="toggle"
-      data-index="-1"
       @click="onClickSelect()"
       :class="{
         'select--active': optionsVisible,
@@ -73,8 +72,17 @@ export default {
   width: 20.833vw;
   padding-top: 1vw;
   background-image: url(~/assets/icons/country_icon.svg);
+  background-size: 1.667vw;
   background-repeat: no-repeat;
-  background-position: 1.111vw 1.9vw;
+  background-position: 1.111vw 2.2vw;
+  @media screen and (min-width: 360px) and (max-width: 575px) {
+    padding-bottom: 5vw;
+    border-radius: 1.389vw;
+    background-size: 6.667vw;
+    background-position: 4.111vw 5.5vw;
+    font-size: 5.278vw;
+    line-height: 6.389vw;
+  }
   &--active {
     &::after {
       content: "";
@@ -84,6 +92,10 @@ export default {
       background-image: url("~/assets/icons/select-arrow_icon.svg");
       transform: rotate(180deg);
       transition: all 0.3s ease-in-out;
+      @media screen and (min-width: 360px) and (max-width: 575px) {
+        width: 6.667vw;
+        height: 6.667vw;
+      }
     }
   }
   &__country {
@@ -96,6 +108,13 @@ export default {
     line-height: 1.597vw;
     color: #e0e0e0;
     transition: 0.3s;
+
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      padding: 0.828vw 1.111vw 2.764vw 14.5vw;
+      font-size: 5.278vw;
+      line-height: 6.389vw;
+      white-space: nowrap;
+    }
   }
 }
 
@@ -118,6 +137,14 @@ export default {
   border-radius: 0.347vw;
   color: #e0e0e0;
   cursor: pointer;
+  @media screen and (min-width: 360px) and (max-width: 575px) {
+    padding: 1.828vw 2.111vw 4.564vw 14vw;
+    width: 91.667vw;
+    height: 15.556vw;
+    border-radius: 1.389vw;
+    font-size: 5.278vw;
+    line-height: 6.389vw;
+  }
   &:hover,
   &:focus {
     border: 0.069vw solid #6ceec7;
@@ -130,6 +157,10 @@ export default {
     height: 1.667vw;
     background-size: cover;
     background-image: url("~/assets/icons/select-arrow_icon.svg");
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      width: 6.667vw;
+      height: 6.667vw;
+    }
   }
   &:focus {
     outline: none;
@@ -139,6 +170,10 @@ export default {
     font-size: 0.764vw;
     line-height: 0.903vw;
     color: #6ceec7;
+     @media screen and (min-width: 360px) and (max-width: 575px) {
+        font-size: 2.964vw;
+        line-height: 1.903vw;
+     }
     &::after {
       margin-top: 1.3vw;
     }
@@ -146,7 +181,7 @@ export default {
 }
 
 .select__toggle--active + span {
-  margin-top: 0.5vw;
+  margin-top: 0.9vw;
 }
 
 .select__dropdown {
@@ -165,6 +200,13 @@ export default {
 
   box-shadow: 0px 0.278vw 1.042vw rgba(0, 0, 0, 0.3);
   border-radius: 0.347vw;
+  @media screen and (min-width: 360px) and (max-width: 575px) {
+    top: 17vw;
+    width: 91.667vw;
+    padding: 4.458vw 4.597vw;
+    max-height: 44.167vw;
+    border-radius: 1.389vw;
+  }
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -180,10 +222,19 @@ export default {
   padding: 0 0 1.042vw 0;
   color: #5e5e5e;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  @media screen and (min-width: 360px) and (max-width: 575px) {
+    padding: 0 0 5.042vw 0;
+    font-size: 4.167vw;
+    line-height: 5vw;
+  }
   &:hover,
   &:focus {
     color: black;
     margin-left: 0.756vw;
+    @media screen and (min-width: 360px) and (max-width: 575px) {
+      margin-left: 3vw;
+    }
   }
   &:last-child {
     margin-bottom: 0;
@@ -192,24 +243,8 @@ export default {
 }
 
 .select__option_selected {
-  background-color: #e1f5fe;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.select__option_selected::after {
-  content: "";
-  width: 0.75rem;
-  height: 0.75rem;
-  color: #0277bd;
-  background-size: cover;
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" height="100" width="100" class="svg-inline--fa fa-check fa-w-16" data-icon="check" data-prefix="fas" aria-hidden="true"%3E%3Cpath d="M33.964 85.547l-32.5-32.251a4.935 4.935 0 010-7.017l7.071-7.017a5.027 5.027 0 017.071 0L37.5 60.987l46.894-46.534a5.028 5.028 0 017.07 0l7.072 7.017a4.935 4.935 0 010 7.017l-57.5 57.06a5.027 5.027 0 01-7.072 0z" fill="%230277bd"/%3E%3C/svg%3E');
-}
-
-.select__option:hover {
-  background-color: #f5f5f5;
-  cursor: pointer;
-  transition: 0.2s background-color ease-in-out;
 }
 </style>
