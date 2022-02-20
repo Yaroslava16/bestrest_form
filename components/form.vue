@@ -69,6 +69,14 @@
         >
           <Input :input="input.email" />
         </div>
+         <div
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          data-aos-easing="ease-in-out"
+          data-aos-once="true"
+        >
+          <Checkbox :input="input.email" />
+        </div>
       </form>
       <div
         data-aos="fade-up"
@@ -91,6 +99,7 @@ import "aos/dist/aos.css";
 import Input from "~/components/input.vue";
 import Select from "~/components/select.vue";
 import countries from "~/components/country.js";
+import Checkbox from '~/components/checkbox.vue';
 export default {
   mounted() {
     AOS.init({});
@@ -98,6 +107,7 @@ export default {
   components: {
     Input,
     Select,
+    Checkbox,
   },
   methods: {
     submitHandler() {
@@ -259,6 +269,7 @@ export default {
     border-radius: 0.347vw;
     background: #6ceec7;
     color: black;
+    white-space: nowrap;
     cursor: pointer;
     transition: 0.3s;
     @media screen and (min-width: 360px) and (max-width: 575px) {
